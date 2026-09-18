@@ -1,4 +1,4 @@
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
@@ -9,5 +9,9 @@ export async function POST(request: NextRequest) {
   }
 
   revalidateTag("products", { expire: 0 });
+  revalidatePath("/");
+  revalidatePath("/productos");
+  revalidatePath("/categoria/[slug]", "page");
+
   return NextResponse.json({ revalidated: true, now: Date.now() });
 }
