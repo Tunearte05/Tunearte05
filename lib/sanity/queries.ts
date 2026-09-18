@@ -18,6 +18,10 @@ const productProjection = `{
   image
 }`;
 
+// Safety net in case the Sanity webhook that triggers instant revalidation
+// ever fails to fire; the tag lets /api/revalidate refresh on demand.
+const fetchOptions = { next: { tags: ["products"], revalidate: 3600 } };
+
 function toProduct(raw: RawProduct): Product {
   return {
     id: raw.id,
@@ -32,7 +36,9 @@ export async function getAllProducts(): Promise<Product[]> {
   if (!sanityClient) return featuredProducts;
 
   const results = await sanityClient.fetch<RawProduct[]>(
-    `*[_type == "product" && available == true] | order(_createdAt desc) ${productProjection}`
+    `*[_type == "product" && available == true] | order(_createdAt desc) ${productProjection}`,
+    {},
+    fetchOptions
   );
   return results.map(toProduct);
 }
@@ -41,7 +47,9 @@ export async function getFeaturedProducts(): Promise<Product[]> {
   if (!sanityClient) return featuredProducts;
 
   const results = await sanityClient.fetch<RawProduct[]>(
-    `*[_type == "product" && available == true && featured == true] | order(_createdAt desc) ${productProjection}`
+    `*[_type == "product" && available == true && featured == true] | order(_createdAt desc) ${productProjection}`,
+    {},
+    fetchOptions
   );
   return results.map(toProduct);
 }
@@ -51,7 +59,8 @@ export async function getProductsByCategory(category: Product["category"]): Prom
 
   const results = await sanityClient.fetch<RawProduct[]>(
     `*[_type == "product" && available == true && category == $category] | order(_createdAt desc) ${productProjection}`,
-    { category }
+    { category },
+    fetchOptions
   );
   return results.map(toProduct);
 }
