@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Truck, ShieldCheck, CreditCard, Headset } from "lucide-react";
 
 const benefits = [
@@ -21,9 +22,18 @@ export default function Footer() {
           </div>
         ))}
       </div>
-      <div className="border-t border-zinc-800 py-6 text-center">
+      <div className="flex flex-col items-center gap-3 border-t border-zinc-800 py-6 text-center">
+        <div className="rounded-xl bg-white p-1.5 shadow-[0_0_10px_rgba(236,23,130,0.5)]">
+          <Image
+            src="/logo-tunearte.jpg"
+            alt="Tune Arte"
+            width={160}
+            height={160}
+            className="h-12 w-12 rounded-lg object-cover"
+          />
+        </div>
         <p className="font-display text-xl text-brand-pink">GRACIAS POR ELEGIRNOS ♡</p>
-        <p className="mt-2 text-xs text-zinc-500">
+        <p className="text-xs text-zinc-500">
           © {new Date().getFullYear()} Tune Arte — San Carlos, Uruguay
         </p>
       </div>

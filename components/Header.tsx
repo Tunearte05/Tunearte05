@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Search, Heart, User, ShoppingCart, ChevronDown, Menu, X } from "lucide-react";
 import { navLinks } from "@/lib/data";
@@ -33,13 +34,15 @@ export default function Header() {
             {menuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
 
-          <Link href="/" className="shrink-0 font-display leading-none text-brand-pink">
-            <span className="block text-2xl sm:text-3xl drop-shadow-[0_0_6px_rgba(236,23,130,0.6)]">
-              Tune
-            </span>
-            <span className="-mt-1 block text-2xl sm:text-3xl drop-shadow-[0_0_6px_rgba(236,23,130,0.6)]">
-              Arte
-            </span>
+          <Link href="/" className="shrink-0 rounded-xl bg-white p-1.5 leading-none shadow-[0_0_10px_rgba(236,23,130,0.5)]">
+            <Image
+              src="/logo-tunearte.jpg"
+              alt="Tune Arte"
+              width={160}
+              height={160}
+              priority
+              className="h-11 w-11 rounded-lg object-cover sm:h-12 sm:w-12"
+            />
           </Link>
 
           <div className="hidden flex-1 items-center sm:flex">
