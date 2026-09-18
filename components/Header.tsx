@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
-import { Search, Heart, User, ShoppingCart, ChevronDown, Menu, X } from "lucide-react";
+import { Suspense, useState } from "react";
+import { Heart, User, ShoppingCart, ChevronDown, Menu, X } from "lucide-react";
 import { categories, navLinks } from "@/lib/data";
 import { useCart } from "@/context/CartContext";
+import { SearchForm, SearchFormFallback } from "./SearchForm";
 import InstagramIcon from "./icons/InstagramIcon";
 
 export default function Header() {
@@ -45,16 +46,9 @@ export default function Header() {
             />
           </Link>
 
-          <div className="hidden flex-1 items-center sm:flex">
-            <div className="relative w-full max-w-xl">
-              <Search className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" size={18} />
-              <input
-                type="text"
-                placeholder="Buscar productos..."
-                className="w-full rounded-full border border-zinc-700 bg-zinc-900 py-2.5 pl-11 pr-4 text-sm text-white placeholder:text-zinc-500 outline-none transition-colors focus:border-brand-pink"
-              />
-            </div>
-          </div>
+          <Suspense fallback={<SearchFormFallback />}>
+            <SearchForm />
+          </Suspense>
 
           <div className="ml-auto flex items-center gap-4 text-white sm:ml-4">
             <a
@@ -82,16 +76,9 @@ export default function Header() {
         </div>
 
         {/* Search bar (mobile) */}
-        <div className="px-4 pb-3 sm:hidden">
-          <div className="relative">
-            <Search className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" size={18} />
-            <input
-              type="text"
-              placeholder="Buscar productos..."
-              className="w-full rounded-full border border-zinc-700 bg-zinc-900 py-2.5 pl-11 pr-4 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-brand-pink"
-            />
-          </div>
-        </div>
+        <Suspense fallback={<SearchFormFallback mobile />}>
+          <SearchForm mobile />
+        </Suspense>
 
         {/* Nav links */}
         <nav

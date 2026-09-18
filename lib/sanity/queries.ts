@@ -64,3 +64,20 @@ export async function getProductsByCategory(category: Product["category"]): Prom
   );
   return results.map(toProduct);
 }
+
+export async function searchProducts(query: string): Promise<Product[]> {
+  const trimmed = query.trim();
+  if (!trimmed) return [];
+
+  if (!sanityClient) {
+    const q = trimmed.toLowerCase();
+    return featuredProducts.filter((p) => p.name.toLowerCase().includes(q));
+  }
+
+  const results = await sanityClient.fetch<RawProduct[]>(
+    `*[_type == "product" && available == true && name match $q] | order(_createdAt desc) ${productProjection}`,
+    { q: `${trimmed}*` },
+    fetchOptions
+  );
+  return results.map(toProduct);
+}
