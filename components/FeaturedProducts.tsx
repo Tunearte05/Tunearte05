@@ -1,9 +1,11 @@
 import Link from "next/link";
-import { featuredProducts } from "@/lib/data";
+import { getFeaturedProducts } from "@/lib/sanity/queries";
 import ProductCard from "./ProductCard";
 import InstagramIcon from "./icons/InstagramIcon";
 
-export default function FeaturedProducts() {
+export default async function FeaturedProducts() {
+  const products = await getFeaturedProducts();
+
   return (
     <section className="mx-auto max-w-7xl px-6 py-10 sm:px-10">
       <div className="mb-6 flex items-center justify-between">
@@ -17,7 +19,7 @@ export default function FeaturedProducts() {
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:col-span-3">
-          {featuredProducts.map((p) => (
+          {products.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
         </div>

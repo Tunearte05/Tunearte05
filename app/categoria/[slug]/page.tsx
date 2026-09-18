@@ -5,7 +5,8 @@ import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
 import ProductCard from "@/components/ProductCard";
 import CategoryIcon from "@/components/CategoryIcon";
-import { categories, featuredProducts } from "@/lib/data";
+import { categories } from "@/lib/data";
+import { getProductsByCategory } from "@/lib/sanity/queries";
 
 export async function generateStaticParams() {
   return categories.map((cat) => ({ slug: cat.icon }));
@@ -25,7 +26,7 @@ export default async function CategoryPage({ params }: PageProps<"/categoria/[sl
 
   if (!category) notFound();
 
-  const products = featuredProducts.filter((p) => p.category === slug);
+  const products = await getProductsByCategory(category.icon);
 
   return (
     <>

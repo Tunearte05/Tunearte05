@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Heart, Check } from "lucide-react";
 import { formatPrice, type Product } from "@/lib/data";
 import { useCart } from "@/context/CartContext";
@@ -25,8 +26,18 @@ export default function ProductCard({ product }: { product: Product }) {
         <Heart size={16} />
       </button>
 
-      <div className="flex aspect-square items-center justify-center bg-gradient-to-br from-pink-50 to-zinc-100 text-brand-pink">
-        <CategoryIcon icon={product.category} className="h-14 w-14 opacity-70" />
+      <div className="relative flex aspect-square items-center justify-center bg-gradient-to-br from-pink-50 to-zinc-100 text-brand-pink">
+        {product.imageUrl ? (
+          <Image
+            src={product.imageUrl}
+            alt={product.name}
+            fill
+            sizes="(min-width: 1024px) 25vw, 50vw"
+            className="object-cover"
+          />
+        ) : (
+          <CategoryIcon icon={product.category} className="h-14 w-14 opacity-70" />
+        )}
       </div>
 
       <div className="flex flex-1 flex-col gap-1 p-4">

@@ -3,13 +3,15 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
 import ProductCard from "@/components/ProductCard";
-import { featuredProducts } from "@/lib/data";
+import { getAllProducts } from "@/lib/sanity/queries";
 
 export const metadata: Metadata = {
   title: "Todos los productos | Tune Arte",
 };
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const products = await getAllProducts();
+
   return (
     <>
       <Header />
@@ -18,7 +20,7 @@ export default function ProductsPage() {
           <h1 className="mb-8 font-display text-3xl text-brand-pink">TODOS LOS PRODUCTOS</h1>
 
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-            {featuredProducts.map((p) => (
+            {products.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
           </div>

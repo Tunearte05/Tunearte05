@@ -35,6 +35,7 @@ export type Product = {
   name: string;
   price: number;
   category: Category["icon"];
+  imageUrl?: string;
 };
 
 export const featuredProducts: Product[] = [
