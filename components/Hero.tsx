@@ -24,7 +24,7 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-brand-black">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-6 py-14 sm:px-10 md:grid-cols-2 md:py-20">
-        <div>
+        <div key={slide} className="[animation:fade-in_0.4s_ease-out]">
           <h1 className="whitespace-pre-line font-display text-4xl leading-[1.05] text-brand-pink sm:text-5xl">
             {current.title}
           </h1>
@@ -56,14 +56,14 @@ export default function Hero() {
       <button
         onClick={() => setSlide((s) => (s - 1 + slides.length) % slides.length)}
         aria-label="Anterior"
-        className="absolute left-3 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/10 p-2 text-white hover:bg-brand-pink sm:block"
+        className="absolute left-3 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/10 p-2 text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 hover:bg-brand-pink sm:block"
       >
         <ChevronLeft size={24} />
       </button>
       <button
         onClick={() => setSlide((s) => (s + 1) % slides.length)}
         aria-label="Siguiente"
-        className="absolute right-3 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/10 p-2 text-white hover:bg-brand-pink sm:block"
+        className="absolute right-3 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/10 p-2 text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 hover:bg-brand-pink sm:block"
       >
         <ChevronRight size={24} />
       </button>
@@ -74,7 +74,9 @@ export default function Hero() {
             key={i}
             onClick={() => setSlide(i)}
             aria-label={`Ir a slide ${i + 1}`}
-            className={`h-2.5 w-2.5 rounded-full ${i === slide ? "bg-brand-pink" : "bg-white/30"}`}
+            className={`h-2.5 rounded-full transition-all duration-300 ${
+              i === slide ? "w-6 bg-brand-pink" : "w-2.5 bg-white/30 hover:bg-white/50"
+            }`}
           />
         ))}
       </div>

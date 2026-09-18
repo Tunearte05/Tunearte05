@@ -16,11 +16,11 @@ export default function CartDrawer() {
     <div className="fixed inset-0 z-[60] flex justify-end">
       <button
         aria-label="Cerrar pedido"
-        className="absolute inset-0 bg-black/50"
+        className="absolute inset-0 bg-black/50 [animation:fade-in_0.2s_ease-out]"
         onClick={closeCart}
       />
 
-      <div className="relative flex h-full w-full max-w-sm flex-col bg-white shadow-xl">
+      <div className="relative flex h-full w-full max-w-sm flex-col bg-white shadow-xl [animation:slide-in-right_0.25s_ease-out]">
         <div className="flex items-center justify-between border-b border-zinc-200 px-5 py-4">
           <h2 className="font-display text-xl text-brand-pink">Tu pedido</h2>
           <button aria-label="Cerrar" onClick={closeCart} className="text-zinc-500 hover:text-brand-pink">
@@ -84,7 +84,7 @@ export default function CartDrawer() {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 rounded-full bg-brand-pink py-3 text-sm font-bold text-white hover:bg-brand-pink-dark"
+              className="flex items-center justify-center gap-2 rounded-full bg-brand-pink py-3 text-sm font-bold text-white shadow-md transition-all duration-200 hover:bg-brand-pink-dark hover:shadow-lg active:scale-95"
             >
               Finalizar pedido por WhatsApp
             </a>

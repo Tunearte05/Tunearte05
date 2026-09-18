@@ -18,25 +18,25 @@ export default function ProductCard({ product }: { product: Product }) {
   }
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-zinc-200">
+    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-pink/30 hover:shadow-xl hover:shadow-brand-pink/10">
       <button
         aria-label="Agregar a favoritos"
-        className="absolute right-3 top-3 z-10 rounded-full bg-white p-1.5 text-zinc-400 shadow hover:text-brand-pink"
+        className="absolute right-3 top-3 z-10 rounded-full bg-white p-1.5 text-zinc-400 shadow transition-colors hover:text-brand-pink"
       >
         <Heart size={16} />
       </button>
 
-      <div className="relative flex aspect-square items-center justify-center bg-gradient-to-br from-pink-50 to-zinc-100 text-brand-pink">
+      <div className="relative flex aspect-square items-center justify-center overflow-hidden bg-gradient-to-br from-pink-50 to-zinc-100 text-brand-pink">
         {product.imageUrl ? (
           <Image
             src={product.imageUrl}
             alt={product.name}
             fill
             sizes="(min-width: 1024px) 25vw, 50vw"
-            className="object-cover"
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
           />
         ) : (
-          <CategoryIcon icon={product.category} className="h-14 w-14 opacity-70" />
+          <CategoryIcon icon={product.category} className="h-14 w-14 opacity-70 transition-transform duration-500 group-hover:scale-110" />
         )}
       </div>
 
@@ -45,7 +45,7 @@ export default function ProductCard({ product }: { product: Product }) {
         <p className="text-base font-bold text-brand-pink">{formatPrice(product.price)}</p>
         <button
           onClick={handleAdd}
-          className={`mt-2 flex items-center justify-center gap-1.5 rounded-full py-2 text-xs font-bold text-white transition-colors ${
+          className={`mt-2 flex items-center justify-center gap-1.5 rounded-full py-2 text-xs font-bold text-white shadow-sm transition-all duration-200 hover:shadow-md active:scale-95 ${
             added ? "bg-green-600" : "bg-brand-pink hover:bg-brand-pink-dark"
           }`}
         >

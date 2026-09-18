@@ -13,8 +13,10 @@ export default function Footer() {
     <footer className="bg-brand-black text-white">
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 py-10 sm:px-10 md:grid-cols-4">
         {benefits.map((b) => (
-          <div key={b.title} className="flex flex-col items-center gap-2 text-center sm:flex-row sm:text-left">
-            <b.icon className="text-brand-pink" size={26} />
+          <div key={b.title} className="flex flex-col items-center gap-3 text-center sm:flex-row sm:text-left">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-brand-pink/60 text-brand-pink">
+              <b.icon size={22} />
+            </span>
             <div>
               <p className="text-sm font-semibold">{b.title}</p>
               <p className="text-xs text-zinc-400">{b.subtitle}</p>

@@ -24,7 +24,7 @@ export default function Header() {
       </div>
 
       {/* Main header */}
-      <div className="bg-brand-black">
+      <div className="bg-brand-black shadow-lg shadow-black/30">
         <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-3 sm:px-6">
           <button
             className="mr-1 text-white lg:hidden"
@@ -51,7 +51,7 @@ export default function Header() {
               <input
                 type="text"
                 placeholder="Buscar productos..."
-                className="w-full rounded-full border border-zinc-700 bg-zinc-900 py-2.5 pl-11 pr-4 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-brand-pink"
+                className="w-full rounded-full border border-zinc-700 bg-zinc-900 py-2.5 pl-11 pr-4 text-sm text-white placeholder:text-zinc-500 outline-none transition-colors focus:border-brand-pink"
               />
             </div>
           </div>
@@ -61,18 +61,18 @@ export default function Header() {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden items-center gap-2 text-sm font-medium md:flex"
+              className="hidden items-center gap-2 text-sm font-medium transition-colors hover:text-brand-pink md:flex"
             >
               <InstagramIcon size={20} />
               @tunearte.sc
             </a>
-            <button aria-label="Cuenta" className="hover:text-brand-pink">
+            <button aria-label="Cuenta" className="transition-colors hover:text-brand-pink">
               <User size={22} />
             </button>
-            <button aria-label="Favoritos" className="hover:text-brand-pink">
+            <button aria-label="Favoritos" className="transition-colors hover:text-brand-pink">
               <Heart size={22} />
             </button>
-            <button aria-label="Ver pedido" onClick={openCart} className="relative hover:text-brand-pink">
+            <button aria-label="Ver pedido" onClick={openCart} className="relative transition-colors hover:text-brand-pink">
               <ShoppingCart size={22} />
               <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-brand-pink text-[11px] font-bold text-white">
                 {count}
@@ -108,13 +108,13 @@ export default function Header() {
               <Link
                 key={link}
                 href={slug ? `/categoria/${slug}` : "#"}
-                className="flex items-center gap-1 py-2 uppercase hover:text-brand-pink lg:py-0"
+                className="flex items-center gap-1 py-2 uppercase transition-colors hover:text-brand-pink lg:py-0"
               >
                 {link}
               </Link>
             );
           })}
-          <Link href="#" className="flex items-center gap-1 py-2 uppercase hover:text-brand-pink lg:py-0">
+          <Link href="#" className="flex items-center gap-1 py-2 uppercase transition-colors hover:text-brand-pink lg:py-0">
             Más <ChevronDown size={16} />
           </Link>
         </nav>
