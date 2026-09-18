@@ -4,6 +4,7 @@ import CategoryStrip from "@/components/CategoryStrip";
 import PromoBanners from "@/components/PromoBanners";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import Footer from "@/components/Footer";
+import CartDrawer from "@/components/CartDrawer";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <FeaturedProducts />
       </main>
       <Footer />
+      <CartDrawer />
     </>
   );
 }

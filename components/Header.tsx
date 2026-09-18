@@ -4,12 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { Search, Heart, User, ShoppingCart, ChevronDown, Menu, X } from "lucide-react";
-import { navLinks } from "@/lib/data";
+import { categories, navLinks } from "@/lib/data";
 import { useCart } from "@/context/CartContext";
 import InstagramIcon from "./icons/InstagramIcon";
 
 export default function Header() {
-  const { count } = useCart();
+  const { count, openCart } = useCart();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -72,7 +72,7 @@ export default function Header() {
             <button aria-label="Favoritos" className="hover:text-brand-pink">
               <Heart size={22} />
             </button>
-            <button aria-label="Carrito" className="relative hover:text-brand-pink">
+            <button aria-label="Ver pedido" onClick={openCart} className="relative hover:text-brand-pink">
               <ShoppingCart size={22} />
               <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-brand-pink text-[11px] font-bold text-white">
                 {count}
@@ -102,15 +102,18 @@ export default function Header() {
           <Link href="/" className="border-b-2 border-brand-pink py-2 text-brand-pink lg:border-b-2 lg:py-0">
             INICIO
           </Link>
-          {navLinks.map((link) => (
-            <Link
-              key={link}
-              href="#"
-              className="flex items-center gap-1 py-2 uppercase hover:text-brand-pink lg:py-0"
-            >
-              {link}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const slug = categories.find((c) => c.name === link)?.icon;
+            return (
+              <Link
+                key={link}
+                href={slug ? `/categoria/${slug}` : "#"}
+                className="flex items-center gap-1 py-2 uppercase hover:text-brand-pink lg:py-0"
+              >
+                {link}
+              </Link>
+            );
+          })}
           <Link href="#" className="flex items-center gap-1 py-2 uppercase hover:text-brand-pink lg:py-0">
             Más <ChevronDown size={16} />
           </Link>

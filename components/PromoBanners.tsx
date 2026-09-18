@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import CategoryIcon from "./CategoryIcon";
 import type { Category } from "@/lib/data";
@@ -22,9 +23,12 @@ export default function PromoBanners() {
           <div>
             <h3 className="font-display text-2xl text-brand-pink">{b.title}</h3>
             <p className="mt-1 text-xs text-zinc-300">{b.subtitle}</p>
-            <button className="mt-3 flex items-center gap-1 rounded-full bg-brand-pink px-4 py-1.5 text-xs font-semibold text-white hover:bg-brand-pink-dark">
+            <Link
+              href={`/categoria/${b.icon}`}
+              className="mt-3 flex w-fit items-center gap-1 rounded-full bg-brand-pink px-4 py-1.5 text-xs font-semibold text-white hover:bg-brand-pink-dark"
+            >
               VER MÁS <ArrowRight size={14} />
-            </button>
+            </Link>
           </div>
         </div>
       ))}
