@@ -6,6 +6,9 @@ const apiVersion = "2024-01-01";
 
 export const sanityConfigured = Boolean(projectId);
 
+// The Sanity CDN can serve data that is a few seconds old, which made the
+// pages regenerate right after a publish with stale content. Pages are cached
+// by Next.js anyway, so read straight from the API.
 export const sanityClient = projectId
-  ? createClient({ projectId, dataset, apiVersion, useCdn: true })
+  ? createClient({ projectId, dataset, apiVersion, useCdn: false })
   : null;

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Sparkles } from "lucide-react";
 import { INSTAGRAM_URL } from "@/lib/data";
 import { getFeaturedProducts } from "@/lib/sanity/queries";
-import ProductCard from "./ProductCard";
+import FeaturedBanner from "./FeaturedBanner";
 import Reveal from "./Reveal";
 import InstagramIcon from "./icons/InstagramIcon";
 
@@ -23,10 +23,8 @@ export default async function FeaturedProducts() {
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:col-span-3">
-          {products.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
+        <div className="min-w-0 lg:col-span-3">
+          <FeaturedBanner products={products} />
         </div>
 
         <Reveal className="h-full">
