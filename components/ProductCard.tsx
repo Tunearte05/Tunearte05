@@ -36,7 +36,7 @@ export default function ProductCard({ product }: { product: Product }) {
             className="object-cover transition-transform duration-500 group-hover:scale-110"
           />
         ) : (
-          <CategoryIcon icon={product.category} className="h-14 w-14 opacity-70 transition-transform duration-500 group-hover:scale-110" />
+          <CategoryIcon icon={product.categoryIcon ?? "mas"} className="h-14 w-14 opacity-70 transition-transform duration-500 group-hover:scale-110" />
         )}
       </div>
 

@@ -27,19 +27,8 @@ export default defineType({
     defineField({
       name: "category",
       title: "Categoría",
-      type: "string",
-      options: {
-        list: [
-          { title: "Accesorios", value: "accesorios" },
-          { title: "Carteras", value: "carteras" },
-          { title: "Perfumes", value: "perfumes" },
-          { title: "Piercings", value: "piercings" },
-          { title: "Maquillaje", value: "maquillaje" },
-          { title: "Lentes", value: "lentes" },
-          { title: "Gorros", value: "gorros" },
-          { title: "Y mucho más", value: "mas" },
-        ],
-      },
+      type: "reference",
+      to: [{ type: "category" }],
       validation: (rule) => rule.required(),
     }),
     defineField({

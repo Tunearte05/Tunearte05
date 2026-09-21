@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import CategoryIcon from "./CategoryIcon";
-import type { Category } from "@/lib/data";
+import type { IconKey } from "@/lib/icons";
 
-const banners: { icon: Category["icon"]; title: string; subtitle: string }[] = [
+const banners: { icon: IconKey; title: string; subtitle: string }[] = [
   { icon: "piercings", title: "PIERCINGS", subtitle: "Por orden de llegada hasta las 19hs" },
   { icon: "perfumes", title: "PERFUMES", subtitle: "Las mejores marcas y fragancias" },
   { icon: "carteras", title: "CARTERAS", subtitle: "Estilo, comodidad y variedad" },

@@ -5,28 +5,28 @@ import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
 import ProductCard from "@/components/ProductCard";
 import CategoryIcon from "@/components/CategoryIcon";
-import { categories } from "@/lib/data";
-import { getProductsByCategory } from "@/lib/sanity/queries";
+import { getCategories, getProductsByCategory } from "@/lib/sanity/queries";
 
 export async function generateStaticParams() {
-  return categories.map((cat) => ({ slug: cat.icon }));
+  const categories = await getCategories();
+  return categories.map((cat) => ({ slug: cat.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: PageProps<"/categoria/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const category = categories.find((c) => c.icon === slug);
+  const category = (await getCategories()).find((c) => c.slug === slug);
   return { title: category ? `${category.name} | Tune Arte` : "Tune Arte" };
 }
 
 export default async function CategoryPage({ params }: PageProps<"/categoria/[slug]">) {
   const { slug } = await params;
-  const category = categories.find((c) => c.icon === slug);
+  const category = (await getCategories()).find((c) => c.slug === slug);
 
   if (!category) notFound();
 
-  const products = await getProductsByCategory(category.icon);
+  const products = await getProductsByCategory(category.slug);
 
   return (
     <>
