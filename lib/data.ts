@@ -45,3 +45,5 @@ export function formatPrice(value: number) {
     maximumFractionDigits: 0,
   }).format(value);
 }
+
+export const INSTAGRAM_URL = "https://www.instagram.com/tunearte.sc";

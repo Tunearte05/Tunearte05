@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { INSTAGRAM_URL } from "@/lib/data";
 import { getFeaturedProducts } from "@/lib/sanity/queries";
 import ProductCard from "./ProductCard";
 import InstagramIcon from "./icons/InstagramIcon";
@@ -30,7 +31,7 @@ export default async function FeaturedProducts() {
             <InstagramIcon size={28} />
           </div>
           <a
-            href="https://instagram.com"
+            href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-semibold hover:text-brand-pink"

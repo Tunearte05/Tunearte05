@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Suspense, useState } from "react";
 import { Heart, User, ShoppingCart, ChevronDown, Menu, X } from "lucide-react";
-import type { Category } from "@/lib/data";
+import { INSTAGRAM_URL, type Category } from "@/lib/data";
 import { useCart } from "@/context/CartContext";
 import { SearchForm, SearchFormFallback } from "./SearchForm";
 import InstagramIcon from "./icons/InstagramIcon";
@@ -52,7 +52,7 @@ export default function HeaderClient({ navCategories }: { navCategories: Categor
 
           <div className="ml-auto flex items-center gap-4 text-white sm:ml-4">
             <a
-              href="https://instagram.com"
+              href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden items-center gap-2 text-sm font-medium transition-colors hover:text-brand-pink md:flex"
