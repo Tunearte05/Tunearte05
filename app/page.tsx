@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Marquee from "@/components/Marquee";
 import CategoryStrip from "@/components/CategoryStrip";
 import PromoBanners from "@/components/PromoBanners";
 import FeaturedProducts from "@/components/FeaturedProducts";
@@ -12,6 +13,7 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
+        <Marquee />
         <CategoryStrip />
         <PromoBanners />
         <FeaturedProducts />

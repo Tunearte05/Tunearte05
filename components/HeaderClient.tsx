@@ -68,7 +68,7 @@ export default function HeaderClient({ navCategories }: { navCategories: Categor
             </button>
             <button aria-label="Ver pedido" onClick={openCart} className="relative transition-colors hover:text-brand-pink">
               <ShoppingCart size={22} />
-              <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-brand-pink text-[11px] font-bold text-white">
+              <span key={count} className="absolute -right-2 -top-2 flex h-5 w-5 [animation:bump_0.35s_ease-out] items-center justify-center rounded-full bg-brand-pink text-[11px] font-bold text-white">
                 {count}
               </span>
             </button>

@@ -7,6 +7,7 @@ import { formatPrice, type Product } from "@/lib/data";
 import { useCart } from "@/context/CartContext";
 import CategoryIcon from "./CategoryIcon";
 import ProductDetail from "./ProductDetail";
+import Reveal from "./Reveal";
 
 export default function ProductCard({ product }: { product: Product }) {
   const { addItem } = useCart();
@@ -20,7 +21,8 @@ export default function ProductCard({ product }: { product: Product }) {
   }
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-pink/30 hover:shadow-xl hover:shadow-brand-pink/10">
+    <Reveal className="h-full">
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-pink/30 hover:shadow-xl hover:shadow-brand-pink/10">
       <button
         aria-label="Agregar a favoritos"
         className="absolute right-3 top-3 z-10 rounded-full bg-white p-1.5 text-zinc-400 shadow transition-colors hover:text-brand-pink"
@@ -52,7 +54,7 @@ export default function ProductCard({ product }: { product: Product }) {
         <p className="text-base font-bold text-brand-pink">{formatPrice(product.price)}</p>
         <button
           onClick={handleAdd}
-          className={`mt-2 flex items-center justify-center gap-1.5 rounded-full py-2 text-xs font-bold text-white shadow-sm transition-all duration-200 hover:shadow-md active:scale-95 ${
+          className={`shine-on-hover mt-2 flex items-center justify-center gap-1.5 rounded-full py-2 text-xs font-bold text-white shadow-sm transition-all duration-200 hover:shadow-md active:scale-95 ${
             added ? "bg-green-600" : "bg-brand-pink hover:bg-brand-pink-dark"
           }`}
         >
@@ -75,5 +77,6 @@ export default function ProductCard({ product }: { product: Product }) {
         />
       )}
     </div>
+    </Reveal>
   );
 }
