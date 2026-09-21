@@ -32,6 +32,13 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "description",
+      title: "Descripción",
+      description: "Se muestra cuando el cliente toca la foto del producto (materiales, medidas, detalles).",
+      type: "text",
+      rows: 4,
+    }),
+    defineField({
       name: "featured",
       title: "Producto destacado",
       description: "Mostrarlo en la sección de destacados de la portada",

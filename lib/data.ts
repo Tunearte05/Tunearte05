@@ -25,6 +25,7 @@ export type Product = {
   price: number;
   category: string;
   categoryIcon?: IconKey;
+  description?: string;
   imageUrl?: string;
 };
 

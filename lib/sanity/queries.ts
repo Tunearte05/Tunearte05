@@ -9,6 +9,7 @@ type RawProduct = {
   price: number;
   category: string | null;
   categoryIcon: string | null;
+  description: string | null;
   image: Parameters<typeof urlForImage>[0] | null;
 };
 
@@ -27,6 +28,7 @@ const productProjection = `{
   price,
   "category": coalesce(category->slug.current, category),
   "categoryIcon": category->icon,
+  description,
   image
 }`;
 
@@ -48,6 +50,7 @@ function toProduct(raw: RawProduct): Product {
     price: raw.price,
     category,
     categoryIcon: toIcon(raw.categoryIcon ?? category),
+    description: raw.description ?? undefined,
     imageUrl: raw.image ? urlForImage(raw.image)?.width(600).height(600).url() : undefined,
   };
 }

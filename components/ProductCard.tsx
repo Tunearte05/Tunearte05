@@ -6,10 +6,12 @@ import { Heart, Check } from "lucide-react";
 import { formatPrice, type Product } from "@/lib/data";
 import { useCart } from "@/context/CartContext";
 import CategoryIcon from "./CategoryIcon";
+import ProductDetail from "./ProductDetail";
 
 export default function ProductCard({ product }: { product: Product }) {
   const { addItem } = useCart();
   const [added, setAdded] = useState(false);
+  const [open, setOpen] = useState(false);
 
   function handleAdd() {
     addItem({ id: product.id, name: product.name, price: product.price });
@@ -26,7 +28,12 @@ export default function ProductCard({ product }: { product: Product }) {
         <Heart size={16} />
       </button>
 
-      <div className="relative flex aspect-square items-center justify-center overflow-hidden bg-gradient-to-br from-pink-50 to-zinc-100 text-brand-pink">
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        aria-label={`Ver detalles de ${product.name}`}
+        className="relative flex aspect-square w-full cursor-zoom-in items-center justify-center overflow-hidden bg-gradient-to-br from-pink-50 to-zinc-100 text-brand-pink"
+      >
         {product.imageUrl ? (
           <Image
             src={product.imageUrl}
@@ -38,7 +45,7 @@ export default function ProductCard({ product }: { product: Product }) {
         ) : (
           <CategoryIcon icon={product.categoryIcon ?? "mas"} className="h-14 w-14 opacity-70 transition-transform duration-500 group-hover:scale-110" />
         )}
-      </div>
+      </button>
 
       <div className="flex flex-1 flex-col gap-1 p-4">
         <h3 className="text-sm font-semibold text-zinc-800">{product.name}</h3>
@@ -58,6 +65,15 @@ export default function ProductCard({ product }: { product: Product }) {
           )}
         </button>
       </div>
+
+      {open && (
+        <ProductDetail
+          product={product}
+          onClose={() => setOpen(false)}
+          onAdd={handleAdd}
+          added={added}
+        />
+      )}
     </div>
   );
 }
