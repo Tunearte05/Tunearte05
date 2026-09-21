@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Heart, Check } from "lucide-react";
+import { Heart, Check, Images } from "lucide-react";
 import { formatPrice, type Product } from "@/lib/data";
 import { useCart } from "@/context/CartContext";
 import CategoryIcon from "./CategoryIcon";
@@ -46,6 +46,11 @@ export default function ProductCard({ product }: { product: Product }) {
           />
         ) : (
           <CategoryIcon icon={product.categoryIcon ?? "mas"} className="h-14 w-14 opacity-70 transition-transform duration-500 group-hover:scale-110" />
+        )}
+        {(product.images?.length ?? 0) > 1 && (
+          <span className="absolute bottom-2 left-2 flex items-center gap-1 rounded-full bg-black/60 px-2 py-0.5 text-[11px] font-bold text-white backdrop-blur-sm">
+            <Images size={12} /> {product.images!.length}
+          </span>
         )}
       </button>
 

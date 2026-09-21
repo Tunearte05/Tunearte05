@@ -11,6 +11,7 @@ type RawProduct = {
   categoryIcon: string | null;
   description: string | null;
   image: Parameters<typeof urlForImage>[0] | null;
+  gallery: Parameters<typeof urlForImage>[0][] | null;
 };
 
 type RawCategory = {
@@ -29,7 +30,8 @@ const productProjection = `{
   "category": coalesce(category->slug.current, category),
   "categoryIcon": category->icon,
   description,
-  image
+  image,
+  gallery
 }`;
 
 // Safety net in case the Sanity webhook that triggers instant revalidation
@@ -52,6 +54,10 @@ function toProduct(raw: RawProduct): Product {
     categoryIcon: toIcon(raw.categoryIcon ?? category),
     description: raw.description ?? undefined,
     imageUrl: raw.image ? urlForImage(raw.image)?.width(600).height(600).url() : undefined,
+    images: [raw.image, ...(raw.gallery ?? [])]
+      .filter((img): img is NonNullable<typeof img> => Boolean(img))
+      .map((img) => urlForImage(img)?.width(900).height(900).url())
+      .filter((url): url is string => Boolean(url)),
   };
 }
 

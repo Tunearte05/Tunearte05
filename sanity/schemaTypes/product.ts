@@ -25,6 +25,15 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "gallery",
+      title: "Más fotos",
+      description: "Opcional. Fotos extra del producto: el cliente las ve pasando con flechas al tocar la foto principal.",
+      type: "array",
+      of: [{ type: "image", options: { hotspot: true } }],
+      options: { layout: "grid" },
+      validation: (rule) => rule.max(8),
+    }),
+    defineField({
       name: "category",
       title: "Categoría",
       type: "reference",
