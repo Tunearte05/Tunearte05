@@ -16,7 +16,7 @@ export default function HeaderClient({ navCategories }: { navCategories: Categor
   return (
     <header className="sticky top-0 z-50">
       {/* Top announcement bar */}
-      <div className="bg-brand-pink text-white text-[11px] sm:text-xs font-semibold tracking-wide">
+      <div className="font-display bg-brand-pink text-white text-[11px] sm:text-xs font-semibold tracking-wide">
         <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-1.5 text-center sm:justify-between">
           <span className="hidden sm:inline">♡ ENVÍOS A TODO EL PAÍS ♡</span>
           <span>¡TUS ACCESORIOS, PERFUMES Y MUCHO MÁS EN UN SOLO LUGAR!</span>

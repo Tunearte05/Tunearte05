@@ -50,8 +50,8 @@ export default function ProductCard({ product }: { product: Product }) {
       </button>
 
       <div className="flex flex-1 flex-col gap-1 p-4">
-        <h3 className="text-sm font-semibold text-zinc-800">{product.name}</h3>
-        <p className="text-base font-bold text-brand-pink">{formatPrice(product.price)}</p>
+        <h3 className="font-sans text-sm font-bold text-zinc-800">{product.name}</h3>
+        <p className="font-display text-lg text-brand-pink">{formatPrice(product.price)}</p>
         <button
           onClick={handleAdd}
           className={`shine-on-hover mt-2 flex items-center justify-center gap-1.5 rounded-full py-2 text-xs font-bold text-white shadow-sm transition-all duration-200 hover:shadow-md active:scale-95 ${

@@ -15,7 +15,7 @@
   --color-brand-pink: var(--brand-pink);
   --color-brand-pink-dark: var(--brand-pink-dark);
   --color-brand-black: var(--brand-black);
-  --font-sans: var(--font-poppins);
+  --font-sans: var(--font-fredoka);
   --font-display: var(--font-marker);
 }
 
@@ -28,7 +28,19 @@ body {
     radial-gradient(circle at 88% 90%, rgba(236, 23, 130, 0.08), transparent 40%),
     var(--pattern);
   color: var(--foreground);
-  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+  font-family: var(--font-fredoka), Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  button,
+  nav a {
+    font-family: var(--font-marker), cursive;
+    font-synthesis: none;
+  }
 }
 
 html {

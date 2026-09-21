@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Poppins, Permanent_Marker } from "next/font/google";
+import { Fredoka, Permanent_Marker } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const fredoka = Fredoka({
+  variable: "--font-fredoka",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es" className={`${poppins.variable} ${marker.variable} h-full antialiased`}>
+    <html lang="es" className={`${fredoka.variable} ${marker.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-white">
         <CartProvider>{children}</CartProvider>
       </body>
