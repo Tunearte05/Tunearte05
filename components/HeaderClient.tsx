@@ -6,11 +6,13 @@ import { Suspense, useState } from "react";
 import { Heart, User, ShoppingCart, ChevronDown, Menu, X } from "lucide-react";
 import { INSTAGRAM_URL, type Category } from "@/lib/data";
 import { useCart } from "@/context/CartContext";
+import { useFavorites } from "@/context/FavoritesContext";
 import { SearchForm, SearchFormFallback } from "./SearchForm";
 import InstagramIcon from "./icons/InstagramIcon";
 
 export default function HeaderClient({ navCategories }: { navCategories: Category[] }) {
   const { count, openCart } = useCart();
+  const { favoriteIds } = useFavorites();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -63,9 +65,17 @@ export default function HeaderClient({ navCategories }: { navCategories: Categor
             <button aria-label="Cuenta" className="transition-colors hover:text-brand-pink">
               <User size={22} />
             </button>
-            <button aria-label="Favoritos" className="transition-colors hover:text-brand-pink">
+            <Link href="/favoritos" aria-label="Favoritos" className="relative transition-colors hover:text-brand-pink">
               <Heart size={22} />
-            </button>
+              {favoriteIds.length > 0 && (
+                <span
+                  key={favoriteIds.length}
+                  className="absolute -right-2 -top-2 flex h-5 w-5 [animation:bump_0.35s_ease-out] items-center justify-center rounded-full bg-brand-pink text-[11px] font-bold text-white"
+                >
+                  {favoriteIds.length}
+                </span>
+              )}
+            </Link>
             <button aria-label="Ver pedido" onClick={openCart} className="relative transition-colors hover:text-brand-pink">
               <ShoppingCart size={22} />
               <span key={count} className="absolute -right-2 -top-2 flex h-5 w-5 [animation:bump_0.35s_ease-out] items-center justify-center rounded-full bg-brand-pink text-[11px] font-bold text-white">

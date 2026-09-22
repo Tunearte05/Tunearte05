@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fredoka, Permanent_Marker } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
+import { FavoritesProvider } from "@/context/FavoritesContext";
 
 const fredoka = Fredoka({
   variable: "--font-fredoka",
@@ -25,7 +26,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es" className={`${fredoka.variable} ${marker.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-white">
-        <CartProvider>{children}</CartProvider>
+        <CartProvider>
+          <FavoritesProvider>{children}</FavoritesProvider>
+        </CartProvider>
       </body>
     </html>
   );

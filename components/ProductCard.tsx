@@ -5,14 +5,17 @@ import Image from "next/image";
 import { Heart, Check, Images } from "lucide-react";
 import { formatPrice, type Product } from "@/lib/data";
 import { useCart } from "@/context/CartContext";
+import { useFavorites } from "@/context/FavoritesContext";
 import CategoryIcon from "./CategoryIcon";
 import ProductDetail from "./ProductDetail";
 import Reveal from "./Reveal";
 
 export default function ProductCard({ product }: { product: Product }) {
   const { addItem } = useCart();
+  const { isFavorite, toggleFavorite } = useFavorites();
   const [added, setAdded] = useState(false);
   const [open, setOpen] = useState(false);
+  const favorite = isFavorite(product.id);
 
   function handleAdd() {
     addItem({ id: product.id, name: product.name, price: product.price });
@@ -24,10 +27,14 @@ export default function ProductCard({ product }: { product: Product }) {
     <Reveal className="h-full">
     <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-pink/30 hover:shadow-xl hover:shadow-brand-pink/10">
       <button
-        aria-label="Agregar a favoritos"
-        className="absolute right-3 top-3 z-10 rounded-full bg-white p-1.5 text-zinc-400 shadow transition-colors hover:text-brand-pink"
+        onClick={() => toggleFavorite(product.id)}
+        aria-label={favorite ? "Quitar de favoritos" : "Agregar a favoritos"}
+        aria-pressed={favorite}
+        className={`absolute right-3 top-3 z-10 rounded-full bg-white p-1.5 shadow transition-all duration-200 hover:scale-110 ${
+          favorite ? "text-brand-pink" : "text-zinc-400 hover:text-brand-pink"
+        }`}
       >
-        <Heart size={16} />
+        <Heart size={16} fill={favorite ? "currentColor" : "none"} />
       </button>
 
       <button
