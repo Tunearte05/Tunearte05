@@ -10,10 +10,17 @@ import { useFavorites } from "@/context/FavoritesContext";
 import { SearchForm, SearchFormFallback } from "./SearchForm";
 import InstagramIcon from "./icons/InstagramIcon";
 
-export default function HeaderClient({ navCategories }: { navCategories: Category[] }) {
+export default function HeaderClient({
+  navCategories,
+  moreCategories,
+}: {
+  navCategories: Category[];
+  moreCategories: Category[];
+}) {
   const { count, openCart } = useCart();
   const { favoriteIds } = useFavorites();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50">
@@ -108,9 +115,44 @@ export default function HeaderClient({ navCategories }: { navCategories: Categor
               {cat.name}
             </Link>
           ))}
-          <Link href="#" className="flex items-center gap-1 py-2 uppercase transition-colors hover:text-brand-pink lg:py-0">
-            Más <ChevronDown size={16} />
-          </Link>
+          {moreCategories.length > 0 && (
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setMoreOpen((v) => !v)}
+                aria-expanded={moreOpen}
+                className="flex items-center gap-1 py-2 uppercase transition-colors hover:text-brand-pink lg:py-0"
+              >
+                Más
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform duration-200 ${moreOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+
+              {moreOpen && (
+                <>
+                  <button
+                    aria-label="Cerrar"
+                    className="fixed inset-0 z-40 cursor-default"
+                    onClick={() => setMoreOpen(false)}
+                  />
+                  <div className="absolute left-0 top-full z-50 mt-2 flex min-w-[10rem] flex-col overflow-hidden rounded-xl border border-zinc-800 bg-brand-black py-1 shadow-xl [animation:fade-in_0.15s_ease-out] lg:left-1/2 lg:-translate-x-1/2">
+                    {moreCategories.map((cat) => (
+                      <Link
+                        key={cat.slug}
+                        href={`/categoria/${cat.slug}`}
+                        onClick={() => setMoreOpen(false)}
+                        className="px-4 py-2 text-left uppercase text-white transition-colors hover:bg-white/10 hover:text-brand-pink"
+                      >
+                        {cat.name}
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+          )}
         </nav>
       </div>
     </header>

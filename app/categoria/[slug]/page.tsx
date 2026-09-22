@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
 import ProductCard from "@/components/ProductCard";
 import CategoryIcon from "@/components/CategoryIcon";
-import { getCategories, getProductsByCategory } from "@/lib/sanity/queries";
+import { getAllProducts, getCategories, getProductsByCategory } from "@/lib/sanity/queries";
 
 export async function generateStaticParams() {
   const categories = await getCategories();
@@ -26,7 +26,10 @@ export default async function CategoryPage({ params }: PageProps<"/categoria/[sl
 
   if (!category) notFound();
 
-  const products = await getProductsByCategory(category.slug);
+  // "Y mucho más" is a catch-all: show the whole catalog instead of only
+  // products explicitly tagged with that category.
+  const products =
+    category.slug === "mas" ? await getAllProducts() : await getProductsByCategory(category.slug);
 
   return (
     <>
