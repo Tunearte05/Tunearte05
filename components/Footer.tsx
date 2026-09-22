@@ -34,7 +34,7 @@ export default function Footer() {
             className="h-12 w-12 rounded-lg object-cover"
           />
         </div>
-        <p className="font-display text-xl text-brand-pink">GRACIAS POR ELEGIRNOS ♡</p>
+        <p className="text-xl font-extrabold text-brand-pink">GRACIAS POR ELEGIRNOS ♡</p>
         <p className="text-xs text-zinc-500">
           © {new Date().getFullYear()} Tune Arte — San Carlos, Uruguay
         </p>

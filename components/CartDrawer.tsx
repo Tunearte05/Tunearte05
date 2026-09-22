@@ -22,7 +22,7 @@ export default function CartDrawer() {
 
       <div className="relative flex h-full w-full max-w-sm flex-col bg-white shadow-xl [animation:slide-in-right_0.25s_ease-out]">
         <div className="flex items-center justify-between border-b border-zinc-200 px-5 py-4">
-          <h2 className="font-display text-xl text-brand-pink">Tu pedido</h2>
+          <h2 className="text-xl font-bold text-brand-pink">Tu pedido</h2>
           <button aria-label="Cerrar" onClick={closeCart} className="text-zinc-500 hover:text-brand-pink">
             <X size={22} />
           </button>

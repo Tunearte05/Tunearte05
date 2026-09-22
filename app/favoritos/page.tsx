@@ -17,7 +17,7 @@ export default async function FavoritesPage() {
       <Header />
       <main className="flex-1">
         <section className="mx-auto max-w-7xl px-6 py-10 sm:px-10">
-          <h1 className="mb-8 font-display text-3xl text-brand-pink">MIS FAVORITOS</h1>
+          <h1 className="mb-8 text-3xl font-extrabold text-brand-pink">MIS FAVORITOS</h1>
           <FavoritesGrid products={products} />
         </section>
       </main>

@@ -126,7 +126,7 @@ export default function ProductDetail({ product, onClose, onAdd, added }: Props)
 
         <div className="flex flex-1 flex-col gap-3 overflow-y-auto p-6">
           <h2 className="pr-8 font-sans text-xl font-extrabold text-zinc-800">{product.name}</h2>
-          <p className="font-display text-3xl text-brand-pink">{formatPrice(product.price)}</p>
+          <p className="text-3xl font-extrabold text-brand-pink">{formatPrice(product.price)}</p>
           {product.description ? (
             <p className="whitespace-pre-line text-sm leading-relaxed text-zinc-600">{product.description}</p>
           ) : (

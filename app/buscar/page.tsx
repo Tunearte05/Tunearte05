@@ -19,7 +19,7 @@ export default async function SearchPage({ searchParams }: PageProps<"/buscar">)
       <Header />
       <main className="flex-1">
         <section className="mx-auto max-w-7xl px-6 py-10 sm:px-10">
-          <h1 className="mb-2 font-display text-3xl text-brand-pink">
+          <h1 className="mb-2 text-3xl font-extrabold text-brand-pink">
             {query ? `RESULTADOS PARA "${query}"` : "BUSCAR PRODUCTOS"}
           </h1>
 

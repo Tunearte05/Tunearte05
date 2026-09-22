@@ -21,7 +21,7 @@ export default function PromoBanners() {
             <CategoryIcon icon={b.icon} className="h-8 w-8" />
           </span>
           <div>
-            <h3 className="font-display text-2xl text-brand-pink">{b.title}</h3>
+            <h3 className="text-2xl font-extrabold text-brand-pink">{b.title}</h3>
             <p className="mt-1 text-xs text-zinc-300">{b.subtitle}</p>
             <Link
               href={`/categoria/${b.icon}`}

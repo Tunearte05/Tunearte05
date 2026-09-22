@@ -21,7 +21,7 @@ export default function Marquee() {
               {row.map((item, i) => (
                 <span
                   key={i}
-                  className={`font-display text-lg text-white sm:text-xl ${item === "♡" ? "text-black/70" : ""}`}
+                  className={`text-lg font-bold text-white sm:text-xl ${item === "♡" ? "text-black/70" : ""}`}
                 >
                   {item}
                 </span>

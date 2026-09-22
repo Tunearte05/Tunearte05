@@ -17,7 +17,7 @@ export default async function ProductsPage() {
       <Header />
       <main className="flex-1">
         <section className="mx-auto max-w-7xl px-6 py-10 sm:px-10">
-          <h1 className="mb-8 font-display text-3xl text-brand-pink">TODOS LOS PRODUCTOS</h1>
+          <h1 className="mb-8 text-3xl font-extrabold text-brand-pink">TODOS LOS PRODUCTOS</h1>
 
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
             {products.map((p) => (

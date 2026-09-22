@@ -40,7 +40,7 @@ export default async function CategoryPage({ params }: PageProps<"/categoria/[sl
             <span className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-brand-pink bg-brand-black text-white">
               <CategoryIcon icon={category.icon} className="h-6 w-6" />
             </span>
-            <h1 className="font-display text-3xl text-brand-pink">{category.name.toUpperCase()}</h1>
+            <h1 className="text-3xl font-extrabold text-brand-pink">{category.name.toUpperCase()}</h1>
           </div>
 
           {products.length === 0 ? (

@@ -27,10 +27,10 @@ export default function Hero() {
       <div aria-hidden className="pointer-events-none absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-brand-pink/15 blur-3xl" />
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-6 py-14 sm:px-10 md:grid-cols-2 md:py-20">
         <div key={slide} className="[animation:fade-in_0.4s_ease-out]">
-          <h1 className="whitespace-pre-line font-display text-4xl leading-[1.05] text-brand-pink sm:text-5xl">
+          <h1 className="whitespace-pre-line text-4xl font-extrabold leading-[1.05] text-brand-pink sm:text-5xl">
             {current.title}
           </h1>
-          <p className="mt-6 inline-block border-b-2 border-brand-pink pb-1 font-display text-lg text-white sm:text-xl">
+          <p className="mt-6 inline-block border-b-2 border-brand-pink pb-1 text-lg font-bold text-white sm:text-xl">
             {current.tagline} ♡
           </p>
         </div>
@@ -46,7 +46,7 @@ export default function Hero() {
               </div>
             ))}
 
-            <div className="absolute -right-3 -top-3 flex h-20 w-20 rotate-6 [animation:pulse-glow_2.4s_ease-in-out_infinite] items-center justify-center rounded-2xl bg-brand-pink p-3 text-center font-display text-xs leading-tight text-white shadow-lg sm:h-24 sm:w-24 sm:text-sm">
+            <div className="absolute -right-3 -top-3 flex h-20 w-20 rotate-6 [animation:pulse-glow_2.4s_ease-in-out_infinite] items-center justify-center rounded-2xl bg-brand-pink p-3 text-center text-xs font-bold leading-tight text-white shadow-lg sm:h-24 sm:w-24 sm:text-sm">
               TODO LO QUE TE GUSTA ESTÁ AQUÍ
             </div>
             <Sparkles className="absolute -left-4 -top-4 text-brand-pink [animation:twinkle_2.2s_ease-in-out_infinite]" size={28} />

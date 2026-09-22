@@ -12,7 +12,7 @@ export default async function FeaturedProducts() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-10 sm:px-10">
       <div className="mb-6 flex items-center justify-between gap-3">
-        <h2 className="relative inline-flex items-center gap-2 font-display text-xl text-brand-pink sm:text-3xl">
+        <h2 className="relative inline-flex items-center gap-2 text-xl font-extrabold text-brand-pink sm:text-3xl">
           ♛ PRODUCTOS DESTACADOS
           <Sparkles className="hidden text-brand-pink sm:block [animation:twinkle_2.4s_ease-in-out_infinite]" size={22} />
           <span className="absolute -bottom-1.5 left-0 h-2 w-full -skew-x-12 rounded-sm bg-brand-pink/25" />
@@ -29,7 +29,7 @@ export default async function FeaturedProducts() {
 
         <Reveal className="h-full">
         <div className="flex h-full flex-col items-center justify-center gap-3 rounded-2xl bg-brand-black p-6 text-center text-white">
-          <h3 className="font-display text-xl text-brand-pink">Seguinos en Instagram</h3>
+          <h3 className="text-xl font-extrabold text-brand-pink">Seguinos en Instagram</h3>
           <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-pink text-brand-pink [animation:pulse-glow_2.6s_ease-in-out_infinite]">
             <InstagramIcon size={28} />
           </div>
