@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import CategoryIcon from "./CategoryIcon";
 
@@ -20,9 +20,25 @@ const slides = [
 export default function Hero() {
   const [slide, setSlide] = useState(0);
   const current = slides[slide];
+  const touchX = useRef<number | null>(null);
+
+  function goTo(dir: 1 | -1) {
+    setSlide((s) => (s + dir + slides.length) % slides.length);
+  }
 
   return (
-    <section className="relative overflow-hidden bg-brand-black">
+    <section
+      className="relative overflow-hidden bg-brand-black touch-pan-y"
+      onTouchStart={(e) => {
+        touchX.current = e.touches[0].clientX;
+      }}
+      onTouchEnd={(e) => {
+        if (touchX.current === null) return;
+        const dx = e.changedTouches[0].clientX - touchX.current;
+        touchX.current = null;
+        if (Math.abs(dx) > 40) goTo(dx < 0 ? 1 : -1);
+      }}
+    >
       <div aria-hidden className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-brand-pink/20 blur-3xl" />
       <div aria-hidden className="pointer-events-none absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-brand-pink/15 blur-3xl" />
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-6 py-14 sm:px-10 md:grid-cols-2 md:py-20">
@@ -57,14 +73,14 @@ export default function Hero() {
 
       {/* Controls */}
       <button
-        onClick={() => setSlide((s) => (s - 1 + slides.length) % slides.length)}
+        onClick={() => goTo(-1)}
         aria-label="Anterior"
         className="absolute left-3 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/10 p-2 text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 hover:bg-brand-pink sm:block"
       >
         <ChevronLeft size={24} />
       </button>
       <button
-        onClick={() => setSlide((s) => (s + 1) % slides.length)}
+        onClick={() => goTo(1)}
         aria-label="Siguiente"
         className="absolute right-3 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/10 p-2 text-white backdrop-blur-sm transition-all duration-200 hover:scale-110 hover:bg-brand-pink sm:block"
       >
